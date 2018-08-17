@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Music from '../components/Music.js'
 import Lyric from '../components/Lyric.js'
-import UserSignIn from '../components/UserSignIn.js'
 
 export default class Song extends Component {
 

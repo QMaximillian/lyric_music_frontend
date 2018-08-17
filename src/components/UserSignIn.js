@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Song from '../containers/Song'
 
 const UserSignIn = () => {
@@ -6,7 +6,6 @@ const UserSignIn = () => {
 
   return (
     <div>
-      
       <Song />
     </div>
   )
