@@ -5,10 +5,10 @@ import { Card, Header, Segment } from 'semantic-ui-react'
 const SongCard = (props) => {
 
 
-  const newLyric = () => {
+  // const newLyric = () => {
     // a click on the field surrounding the lyrics will reveal a text field that allows you to edit the lyrics
     // when done editing lyrics, click save to POST to rails songs database
-  }
+  // }
 
   return(
     <Card>
