@@ -8,7 +8,7 @@ const NavBar = () => {
       <ul>
         <li>
           <NavLink to="/"
-          exact>Sign In
+          exact>Create Songs
         </NavLink>
         </li>
         <li>

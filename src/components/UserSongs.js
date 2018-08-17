@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 
-export default class Lyric extends Component {
+export default class SongView extends Component {
 
-  render(){
+  render() {
     return(
       <div>
-        LyricComponent
+        UserSongs
       </div>
     )
   }
