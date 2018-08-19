@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import { Form, TextArea } from 'semantic-ui-react'
-import ResponsivePiano from './ResponsivePiano'
-
+import { Form, TextArea, Button } from 'semantic-ui-react'
 
 export default class SongView extends Component {
 
@@ -42,7 +40,7 @@ export default class SongView extends Component {
   render() {
     return(
       <React.Fragment>
-      <Form onSubmit={this.handleSongSubmit}>
+      <Form className="ui grid container" onSubmit={this.handleSongSubmit}>
         <TextArea
           name="songName"
           placeholder="Song Name"
@@ -59,9 +57,9 @@ export default class SongView extends Component {
           // value={this.state.music}
           placeholder="Music"
           onChange={(event) => this.handleSongChange(event)}/>
-        <input type="submit"></input>
+        <Button
+          className="massive ui button" type="Submit">Submit</Button>
       </Form>
-      <ResponsivePiano />
     </React.Fragment>
     )
   }
