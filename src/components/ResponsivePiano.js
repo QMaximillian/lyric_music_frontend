@@ -20,6 +20,7 @@ const keyboardShortcuts = KeyboardShortcuts.create({
   keyboardConfig: KeyboardShortcuts.HOME_ROW,
 });
 
+console.log(KeyboardShortcuts.create)
 
 function ResponsivePiano(props) {
   return (
