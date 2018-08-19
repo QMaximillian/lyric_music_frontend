@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Input, Form, Grid, Dropdown} from 'semantic-ui-react'
+import { Button, Input, Form, Grid, Dropdown } from 'semantic-ui-react'
 
 const options = [
   {key: 1, text: "ML", value: "ml"},
@@ -18,11 +18,14 @@ export default class RhymingDict extends Component {
   fetchRhymingDictionary = () => {
     fetch(`https://api.datamuse.com/words?${this.state.value}=${this.state.queryWord}`)
     .then(resp => resp.json())
-    .then(console.log)
-  }
+    .then(words => this.setState({
+        results: words
+      }, () => console.log(this.state)))
+    }
+
 
   handleChange = (e, { value }) => this.setState(
-    { value }, () => console.log(this.state)
+      { value }
   )
 
   handleInputChange = (event) => {
@@ -37,9 +40,9 @@ export default class RhymingDict extends Component {
     return (
 
         // {this.fetchRhymingDictionary()}
-
+        <div>
         <Form onSubmit={this.fetchRhymingDictionary}>
-          <Grid columns={4}>
+          <Grid columns={1}>
             <Grid.Column>
               <Dropdown
                 onChange={this.handleChange}
@@ -53,6 +56,9 @@ export default class RhymingDict extends Component {
         <Input value={this.state.queryWord} name="queryWord" onChange={this.handleInputChange}/>
         <Button>Submit</Button>
        </Form>
+     </div>
+
+
 
     )
   }

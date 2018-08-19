@@ -7,8 +7,11 @@ export default class SongView extends Component {
   render() {
     return(
       <React.Fragment>
-      <Form className="ui grid container" onSubmit={this.props.handleSongSubmit}>
+      <Form
+        onFocus={this.props.handleInTextArea}
+        className="ui grid container" onSubmit={this.props.handleSongSubmit}>
         <TextArea
+          // onFocus={console.log("Focused")}
           name="songName"
           placeholder="Song Name"
           // value={this.state.songName}

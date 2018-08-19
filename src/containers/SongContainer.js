@@ -9,12 +9,29 @@ export default class SongContainer extends Component {
   state = {
     songName: "",
     lyric: "",
-    music: ""
+    music: "",
+    inTextAreas: false
   }
 
   // If your in the textarea (SongView)
   // The piano shortcut keys will be disabled (ResponsivePiano)
   // If you click out of the space the keyboard shortcuts are re-enabled
+
+  handleInTextArea = (event) => {
+    event.persist()
+      this.setState({
+        inTextAreas: true
+      })
+  }
+
+  // handleKeyboardOff = (event, secondThing) => {
+  //   if (this.state.inTextAreas === true) {
+  //
+  //   } else {
+  //
+  //   }
+  // }
+
 
   handleSongChange = (event) => {
     this.setState({
@@ -52,8 +69,11 @@ export default class SongContainer extends Component {
         <SongView
           handleSongChange={this.handleSongChange}
           handleSongSubmit={this.handleSongSubmit}
+          handleInTextArea={this.handleInTextArea}
         />
-        <ResponsivePiano />
+        <ResponsivePiano
+          stateofTextArea={this.state.inTextAreas}
+        />
       </div>
     )
   }
