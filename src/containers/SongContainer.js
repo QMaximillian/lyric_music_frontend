@@ -17,11 +17,18 @@ export default class SongContainer extends Component {
   // The piano shortcut keys will be disabled (ResponsivePiano)
   // If you click out of the space the keyboard shortcuts are re-enabled
 
-  handleInTextArea = (event) => {
+  handleTextAreaOnFocus = (event) => {
     event.persist()
       this.setState({
         inTextAreas: true
-      })
+      }, () => console.log(this.state))
+  }
+
+  handleTextAreaOnBlur = (event) => {
+    event.persist()
+      this.setState({
+        inTextAreas: false
+      }, () => console.log(this.state))
   }
 
   // handleKeyboardOff = (event, secondThing) => {
@@ -36,7 +43,7 @@ export default class SongContainer extends Component {
   handleSongChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
-    }, () => console.log(this.state))
+    })
   }
 
   handleSongSubmit = (event) => {
@@ -63,16 +70,21 @@ export default class SongContainer extends Component {
 
 
   render(){
+
     return(
       <div>
-        <RhymingDict />
+        <RhymingDict
+          handleTextAreaOnBlur={this.handleTextAreaOnBlur}
+          handleTextAreaOnFocus={this.handleTextAreaOnFocus}
+        />
         <SongView
           handleSongChange={this.handleSongChange}
           handleSongSubmit={this.handleSongSubmit}
-          handleInTextArea={this.handleInTextArea}
+          handleTextAreaOnFocus={this.handleTextAreaOnFocus}
+          handleTextAreaOnBlur={this.handleTextAreaOnBlur}
         />
         <ResponsivePiano
-          stateofTextArea={this.state.inTextAreas}
+          stateOfTextArea={this.state.inTextAreas}
         />
       </div>
     )

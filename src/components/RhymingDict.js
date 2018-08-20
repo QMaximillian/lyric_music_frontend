@@ -41,7 +41,10 @@ export default class RhymingDict extends Component {
 
         // {this.fetchRhymingDictionary()}
         <div>
-        <Form onSubmit={this.fetchRhymingDictionary}>
+        <Form
+          onFocus={this.props.handleTextAreaOnFocus}
+          onBlur={this.props.handleTextAreaOnBlur}
+           onSubmit={this.fetchRhymingDictionary}>
           <Grid columns={1}>
             <Grid.Column>
               <Dropdown

@@ -23,22 +23,40 @@ const keyboardShortcuts = KeyboardShortcuts.create({
 
 
 function ResponsivePiano(props) {
+  const textArea = props.stateOfTextArea
+  console.log(textArea);
   return (
     <DimensionsProvider>
-      {({ containerWidth, containerHeight }) => (
+      {({containerWidth, containerHeight }) => (
         <SoundfontProvider
           instrumentName="acoustic_grand_piano"
           audioContext={audioContext}
           hostname={soundfontHostname}
           render={({ isLoading, playNote, stopNote }) => (
             <Piano
-              noteRange={noteRange}
-              width={containerWidth}
-              onPlayNote={playNote}
-              onStopNote={stopNote}
-              disabled={isLoading}
-              keyboardShortcuts={keyboardShortcuts}
-            />
+                noteRange={noteRange}
+                width={containerWidth}
+                onPlayNote={playNote}
+                onStopNote={stopNote}
+                disabled={isLoading}
+                keyboardShortcuts={keyboardShortcuts}
+              />
+            // { textArea ?
+            //   (<Piano
+            //     noteRange={noteRange}
+            //     width={containerWidth}
+            //     onPlayNote={playNote}
+            //     onStopNote={stopNote}
+            //     disabled={isLoading}
+            //   />) : (<Piano
+            //     noteRange={noteRange}
+            //     width={containerWidth}
+            //     onPlayNote={playNote}
+            //     onStopNote={stopNote}
+            //     disabled={isLoading}
+            //     keyboardShortcuts={keyboardShortcuts}
+            //   />)
+            // )}
           )}
         />
       )}
