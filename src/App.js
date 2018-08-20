@@ -17,3 +17,11 @@ const App = () => {
 }
 
 export default App;
+
+// Getting textArea state into the keyboard
+
+//Fixing dropdown menu in Semantic React UI
+
+//Posting to Rails database
+//Setting up user name
+// Getting dropdown results to appear on page

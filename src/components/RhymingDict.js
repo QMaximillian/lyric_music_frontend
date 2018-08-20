@@ -11,6 +11,7 @@ const options = [
 export default class RhymingDict extends Component {
 
   state = {
+      results: [],
       value: '',
       queryWord: ''
   }
@@ -20,9 +21,13 @@ export default class RhymingDict extends Component {
     .then(resp => resp.json())
     .then(words => this.setState({
         results: words
-      }, () => console.log(this.state)))
+      }, () => console.log(words)))
     }
 
+  displayDictResults = () => {
+    return this.state.results.map(result => {
+        return <p>{result.word}</p>
+  })}
 
   handleChange = (e, { value }) => this.setState(
       { value }
@@ -59,6 +64,10 @@ export default class RhymingDict extends Component {
         <Input value={this.state.queryWord} name="queryWord" onChange={this.handleInputChange}/>
         <Button>Submit</Button>
        </Form>
+
+      <div>
+        {this.displayDictResults()}
+      </div>
      </div>
 
 

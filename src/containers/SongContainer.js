@@ -43,23 +43,25 @@ export default class SongContainer extends Component {
   handleSongChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
-    })
+    }, ()=> console.log(this.state))
   }
 
   handleSongSubmit = (event) => {
+    console.log(this.state);
+    let songBody = {
+      type: "songs",
+      attributes: {
+        name: this.state.songName,
+        lyric: this.state.lyric,
+        music: this.state.music,
+        user_id: null
+      }
+    }
+
     event.preventDefault()
     fetch('http://localhost:3001/api/v1/songs', {
         method: 'POST',
-        body: JSON.stringify({
-          id: "7",
-          type: "songs",
-          attributes: {
-            name: this.state.songName,
-            lyric: this.state.lyric,
-            music: this.state.music,
-            user_id: null
-          }
-        }),
+        body: JSON.stringify(songBody),
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
