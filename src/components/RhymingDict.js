@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Button, Input, Form, Grid, Dropdown } from 'semantic-ui-react'
+// import { Button, Input, Form, Grid } from 'semantic-ui-react'
+import { Dropdown } from 'antd'
 
 const options = [
   {key: 1, text: "ML", value: "ml"},
@@ -7,6 +8,8 @@ const options = [
   {key: 3, text: "Rel_Rhy", value: "rel_rhy"},
   {key: 4, text: "Rel_Trg", value: "rel_trg"},
 ]
+
+
 
 export default class RhymingDict extends Component {
 
@@ -46,11 +49,13 @@ export default class RhymingDict extends Component {
 
         // {this.fetchRhymingDictionary()}
         <div>
-        <Form
+
+
+        {/* <Form
           onFocus={this.props.handleTextAreaOnFocus}
           onBlur={this.props.handleTextAreaOnBlur}
            onSubmit={this.fetchRhymingDictionary}>
-          <Grid columns={1}>
+          <Grid columns={2}>
             <Grid.Column>
               <Dropdown
                 onChange={this.handleChange}
@@ -60,14 +65,13 @@ export default class RhymingDict extends Component {
                 value={value}
               />
             </Grid.Column>
+            <Grid.Column>
+              {this.displayDictResults()}
+            </Grid.Column>
           </Grid>
         <Input value={this.state.queryWord} name="queryWord" onChange={this.handleInputChange}/>
         <Button>Submit</Button>
-       </Form>
-
-      <div>
-        {this.displayDictResults()}
-      </div>
+       </Form> */}
      </div>
 
 

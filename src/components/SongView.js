@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Form, TextArea, Button, Input } from 'semantic-ui-react'
 
+
 export default class SongView extends Component {
 
 
@@ -16,6 +17,13 @@ export default class SongView extends Component {
           // onFocus={console.log("Focused")}
           name="songName"
           placeholder="Song Name"
+          // value={this.state.songName}
+          onChange={(event) => this.props.handleSongChange(event)} />
+        <Input
+          style={{ width:"100px", height:"100px" }}
+          // onFocus={console.log("Focused")}
+          name="userName"
+          placeholder="User Name"
           // value={this.state.songName}
           onChange={(event) => this.props.handleSongChange(event)} />
         <TextArea

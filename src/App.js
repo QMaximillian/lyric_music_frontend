@@ -3,25 +3,39 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import AllSongs from './containers/AllSongs'
 import NavBar from './components/NavBar'
 import SongContainer from './containers/SongContainer'
+import { Layout } from 'antd'
+const { Header, Footer, Sider, Content } = Layout
 
 const App = () => {
     return (
-      <Router>
-        <div >
-          <NavBar />
-          <Route exact path='/' component={SongContainer}/>
-          <Route exact path="/songs" component={AllSongs} />
-        </div>
-    </Router>
+      <Layout >
+          <Router>
+            <div>
+              <Header style={{color:
+                 'red'}}>
+                <NavBar />
+              </Header>
+              <Content>
+                <Route exact path='/' component={SongContainer}/>
+              </Content>
+              <Content>
+                <Route exact path="/songs" component={AllSongs} />
+              </Content>
+            </div>
+          </Router>
+          <Footer>
+
+          </Footer>
+      </Layout>
     );
 }
 
 export default App;
 
-// Getting textArea state into the keyboard
+// Getting textArea state into the keyboard DONE
 
 //Fixing dropdown menu in Semantic React UI
 
-//Posting to Rails database
-//Setting up user name
+//Posting to Rails database (Songs) DONE
+//Posting User to DB
 // Getting dropdown results to appear on page

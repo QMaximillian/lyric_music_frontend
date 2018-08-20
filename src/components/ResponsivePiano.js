@@ -24,29 +24,6 @@ const keyboardShortcuts = KeyboardShortcuts.create({
 
 function ResponsivePiano(props) {
   const textArea = props.stateOfTextArea
-
-  // const playingPiano = () => {
-  //   if (textArea) {
-  //     return <Piano
-  //      noteRange={noteRange}
-  //      width={containerWidth}
-  //      onPlayNote={playNote}
-  //      onStopNote={stopNote}
-  //      disabled={isLoading}
-  //    />
-  //   } else {
-  //     return <Piano
-  //      noteRange={noteRange}
-  //      width={containerWidth}
-  //      onPlayNote={playNote}
-  //      onStopNote={stopNote}
-  //      disabled={isLoading}
-  //      keyboardShortcuts={keyboardShortcuts}
-  //    />
-  //  }
-  // }
-
-  console.log(textArea);
   return (
     <DimensionsProvider>
       {({containerWidth, containerHeight }) => (
@@ -63,7 +40,6 @@ function ResponsivePiano(props) {
                 disabled={isLoading}
                 keyboardShortcuts={!textArea ? keyboardShortcuts : null}
               />
-            // playingPiano()
           )}
         />
       )}

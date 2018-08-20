@@ -1,6 +1,22 @@
 import React from 'react'
-import { Card, Header, Segment } from 'semantic-ui-react'
+// import { Card, Header, Segment } from 'semantic-ui-react'
+import { Card, Button } from 'antd'
 
+const gridStyle = {
+  width: '25%',
+  textAlign: 'center',
+  border: 'solid',
+  'border-color': 'grey',
+  width: 200,
+  height: 200
+
+}
+
+const buttonStyle = {
+  type: 'normal',
+  'margin-top': '50px',
+  'text-align': 'center'
+}
 
 const SongCard = (props) => {
 
@@ -11,20 +27,26 @@ const SongCard = (props) => {
   // }
 
   return(
-    <Card>
-      <Segment>
-        {console.log(props.song.attributes)}
-        <Header as='h3' textAlign='center'>
+    <Card.Grid style={gridStyle}>{props.song.attributes.name}
+      <div>
+      <Button style={buttonStyle}>Edit Me</Button>
+    </div>
+
+
+      {console.log(props.song.attributes)}
+      {/* <p>
+
           {props.song.attributes.name}
-        </Header>
-        <Segment as='h3' textAlign='left'>
-          <h5>{props.song.attributes.lyric}</h5>
-        </Segment>
-        <Segment as='h3' textAlign='right'>
-          <h5>{props.song.attributes.music}</h5>
-        </Segment>
-      </Segment>
-    </Card>
+        <p as='h3' textAlign='left'>
+          {props.song.attributes.lyric}
+        </p>
+        <p as='h3' textAlign='right'>
+          {props.song.attributes.music}
+        </p>
+      </p> */}
+
+    </Card.Grid>
+
   )
 }
 

@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import SongCard from '../components/SongCard'
+import { Card } from 'antd'
+
+
 
 export default class AllSongs extends Component {
+
 
   state = {
     songs: []
@@ -20,8 +24,15 @@ export default class AllSongs extends Component {
   }
 
   mappedSongs = () => {
+
     return this.state.songs.map(song => {
-      return <SongCard key={song.attributes.name} song={song}/>
+      return <div style={{padding: '30px' }}>
+        <Card style={{ width: 300 }}>
+            <SongCard key={song.attributes.name} song={song}/>
+
+        </Card>
+      </div>
+
     })
   }
 
