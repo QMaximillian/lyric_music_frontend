@@ -2,11 +2,12 @@ import React from 'react'
 // import { Card, Header, Segment } from 'semantic-ui-react'
 import { Card, Button } from 'antd'
 
+
 const gridStyle = {
   width: '25%',
   textAlign: 'center',
   border: 'solid',
-  'border-color': 'grey',
+  borderColor: 'grey',
   width: 200,
   height: 200
 
@@ -14,8 +15,8 @@ const gridStyle = {
 
 const buttonStyle = {
   type: 'normal',
-  'margin-top': '50px',
-  'text-align': 'center'
+  'marginTop': '50px',
+  'textAlign': 'center'
 }
 
 const SongCard = (props) => {
@@ -26,14 +27,18 @@ const SongCard = (props) => {
     // when done editing lyrics, click save to POST to rails songs database
   // }
 
+
+
+  console.log(props)
+
   return(
+
     <Card.Grid style={gridStyle}>{props.song.attributes.name}
       <div>
-      <Button style={buttonStyle}>Edit Me</Button>
+      <Button onClick={(event) => props.handleEditState()} style={buttonStyle}>Edit Me</Button>
     </div>
 
 
-      {console.log(props.song.attributes)}
       {/* <p>
 
           {props.song.attributes.name}

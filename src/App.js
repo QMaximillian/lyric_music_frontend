@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import AllSongs from './containers/AllSongs'
 import NavBar from './components/NavBar'
-import SongContainer from './containers/SongContainer'
+import NewSongContainer from './containers/NewSongContainer'
 import { Layout } from 'antd'
 const { Header, Footer, Sider, Content } = Layout
 
@@ -16,7 +16,7 @@ const App = () => {
                 <NavBar />
               </Header>
               <Content>
-                <Route exact path='/' component={SongContainer}/>
+                <Route exact path='/' component={NewSongContainer}/>
               </Content>
               <Content>
                 <Route exact path="/songs" component={AllSongs} />
