@@ -3,6 +3,7 @@ import SongCard from '../components/SongCard'
 import { Card } from 'antd'
 
 import SongContainer from './SongContainer'
+import NewSongContainer from './NewSongContainer'
 
 
 
@@ -12,6 +13,7 @@ export default class AllSongs extends Component {
 
   state = {
     songs: [],
+    create: false
   }
 
   componentDidMount(){
@@ -38,30 +40,88 @@ export default class AllSongs extends Component {
   //   })
   // }
 
+  handleSongFilter = (event, songToEdit) => {
+
+  }
+
+
+  handleSongEdit = (event, songToEdit) => {
+    event.persist()
+    const filteredSong = this.state.songs.filter(song => {
+      // console.log(songToEdit.id)
+      // console.log(song.id);
+       return song.id === songToEdit.id
+    })
+
+    const stateCopy = this.state.songs.slice()
+    // console.log(stateCopy)
+    // console.log(filteredSong)
+    let thisOne = stateCopy.find(element => {
+      return element.attributes === filteredSong[0].attributes
+      // console.log(element.attributes)
+      // console.log(filteredSong[0].attributes);
+    })
+
+    // console.log();
+    console.log(thisOne.attributes[event.target.name]);
+    // console.log(thisOne[event.target.name])
+    // this.setState({
+    //   songs: stateCopy
+    // })
+
+    // stateCopy.find(element => {
+    //   element.attributes === thisOne.attributes[event.target.name]
+    //
+    // })
+
+      thisOne.attributes[event.target.name] = event.target.value
+
+      this.setState({
+        songs: stateCopy
+      })
+
+      console.log(stateCopy)
+    }
+
+
+
+
+
+
+
+    // const foundSong = stateCopy.find(filteredSong)
+    // console.log(foundSong);
+
+    // const newSongs = this.state.songs.slice()
+    // newSongs
+    //
+    // console.log(event);
+    //
+    // this.setState({
+    //   [event.target.name]: event.target.value
+    // }, () => console.log(this.state))
+
+
+
   mappedSongs = () => {
     return this.state.songs.map(song => {
       return <div style={{padding: '30px' }}>
-        <SongContainer key={`name-${song.attributes.name}`} song={song}/>
+        <SongContainer
+          handleSongFilter={this.handleSongFilter}
+          handleSongEdit={this.handleSongEdit} key={`name-${song.attributes.name}`}
+          song={song}/>
 
       </div>
     })
   }
 
-  // songCardEdit = (props) => {
-  //   this.state.songs.filter(song => {
-  //     song.attributes.id === props.song.attributes.id
-  //        console.log("Here")
-  //     return <SongCardEdit />
-  //   })
-  // }
-
-
 
 
     render(){
+      console.log(this.state, "AllSongs")
       return(
         <div>
-          {this.mappedSongs()}
+          {this.state.create ? <NewSongContainer /> : this.mappedSongs()}
         </div>
       )
     }

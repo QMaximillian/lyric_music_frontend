@@ -2,31 +2,17 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import AllSongs from './containers/AllSongs'
 import NavBar from './components/NavBar'
+// import Homepage from './components/Homepage'
+
 import NewSongContainer from './containers/NewSongContainer'
 import { Layout } from 'antd'
 const { Header, Footer, Sider, Content } = Layout
 
 const App = () => {
     return (
-      <Layout >
-          <Router>
-            <div>
-              <Header style={{color:
-                 'red'}}>
-                <NavBar />
-              </Header>
-              <Content>
-                <Route exact path='/' component={NewSongContainer}/>
-              </Content>
-              <Content>
-                <Route exact path="/songs" component={AllSongs} />
-              </Content>
-            </div>
-          </Router>
-          <Footer>
-
-          </Footer>
-      </Layout>
+      <div>
+        <NewSongContainer />
+      </div>
     );
 }
 

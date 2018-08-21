@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import SongView from '../components/SongView'
 import ResponsivePiano from '../components/ResponsivePiano'
 import RhymingDict from '../components/RhymingDict'
+import AllSongs from './AllSongs'
 
 
 export default class NewSongContainer extends Component {
@@ -10,7 +11,8 @@ export default class NewSongContainer extends Component {
     songName: "",
     lyric: "",
     music: "",
-    inTextAreas: false
+    inTextAreas: false,
+    allSongs: false
   }
 
   // If your in the textarea (SongView)
@@ -40,10 +42,11 @@ export default class NewSongContainer extends Component {
   // }
 
 
+
   handleSongChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
-    }, ()=> console.log(this.state))
+    })
   }
 
   handleSongSubmit = (event) => {
@@ -70,25 +73,38 @@ export default class NewSongContainer extends Component {
       .then(console.log)
   }
 
+  handleChangeAllSongs = () => {
+    this.setState(prevState => ({
+      ...prevState,
+      allSongs: !prevState.allSongs
+    }), () => console.log(this.state))
+  }
+
+
 
   render(){
-
     return(
       <div>
-        <RhymingDict
-          handleTextAreaOnBlur={this.handleTextAreaOnBlur}
-          handleTextAreaOnFocus={this.handleTextAreaOnFocus}
-        />
-        <SongView
-          handleSongChange={this.handleSongChange}
-          handleSongSubmit={this.handleSongSubmit}
-          handleTextAreaOnFocus={this.handleTextAreaOnFocus}
-          handleTextAreaOnBlur={this.handleTextAreaOnBlur}
-        />
-        <ResponsivePiano
-          stateOfTextArea={this.state.inTextAreas}
-        />
-      </div>
+        <button onClick={this.handleChangeAllSongs}>Change Mode</button>
+      {(this.state.allSongs ?
+        <AllSongs /> :
+          <div>
+            <RhymingDict
+              handleTextAreaOnBlur={this.handleTextAreaOnBlur}
+              handleTextAreaOnFocus={this.handleTextAreaOnFocus}
+            />
+            <SongView
+              handleSongChange={this.handleSongChange}
+              handleSongSubmit={this.handleSongSubmit}
+              handleTextAreaOnFocus={this.handleTextAreaOnFocus}
+              handleTextAreaOnBlur={this.handleTextAreaOnBlur}
+            />
+            <ResponsivePiano
+              stateOfTextArea={this.state.inTextAreas}
+            />
+          </div>
+      )}
+    </div>
     )
   }
 }

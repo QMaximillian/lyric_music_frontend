@@ -4,17 +4,25 @@ import { Form, TextArea, Button, Input } from 'semantic-ui-react'
 
 export default class SongView extends Component {
 
-  // static getDerivedStateFromProps(props, state, prevProps) {
-  //   if (this.prevProps === null || this.prevProps.song !== this.props.song) {
-  //     return {song: this.props.song}
-  //   } else {
-  //     return null
-  //   }
+
+  // state = {
+  //   songName: this.props.songName,
+  //   lyric: this.props.lyric,
+  //   music: this.props.music,
+  // }
   //
+  // handleChangeTry = () => {
+  //   this.setState({
+  //     songName: event.target.songName
+  //     songName: event.target.lyric
+  //     songName: event.target.music
+  //
+  //   })
   // }
 
+
   render() {
-    console.log(this.props.song)
+    console.log(this.props)
     return(
       <React.Fragment>
       <Form
@@ -23,15 +31,12 @@ export default class SongView extends Component {
         className="ui grid container" onSubmit={this.props.handleSongSubmit}>
         <Input
           style={{ width:"100px", height:"100px" }}
-          // onFocus={console.log("Focused")}
           name="songName"
           placeholder={"Song Name"}
-          // value={this.props.song.attributes.name}
           // value={this.props.song.attributes.name}
           onChange={(event) => this.props.handleSongChange(event)} />
         <Input
           style={{ width:"100px", height:"100px" }}
-          // onFocus={console.log("Focused")}
           name="userName"
           placeholder="User Name"
           // value={this.state.songName}

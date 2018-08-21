@@ -29,7 +29,7 @@ const SongCard = (props) => {
 
 
 
-  console.log(props)
+
 
   return(
 
@@ -37,18 +37,6 @@ const SongCard = (props) => {
       <div>
       <Button onClick={(event) => props.handleEditState()} style={buttonStyle}>Edit Me</Button>
     </div>
-
-
-      {/* <p>
-
-          {props.song.attributes.name}
-        <p as='h3' textAlign='left'>
-          {props.song.attributes.lyric}
-        </p>
-        <p as='h3' textAlign='right'>
-          {props.song.attributes.music}
-        </p>
-      </p> */}
 
     </Card.Grid>
 

@@ -1,16 +1,26 @@
 import React, { Component } from 'react'
 // import SongCardEdit from '../components/SongCardEdit'
 import SongCard from '../components/SongCard'
-import SongView from '../components/SongView'
+import SongViewEdit from '../components/SongViewEdit'
 
 
 export default class SongContainer extends Component {
 
   state = {
     edit: false,
+    songName: this.props.song.attributes.name,
+    lyric: this.props.song.attributes.lyric,
+    music: this.props.song.attributes.music,
     // song: ''
   }
 
+  handleSongChange = (event) => {
+    const {name, value} = event.target
+    // console.log(event.target.name, event.target.value)
+    this.setState({
+      [name]: value
+    }, () => console.log(this.state))
+  }
 
 
 
@@ -18,15 +28,22 @@ export default class SongContainer extends Component {
     console.log("Running")
     this.setState({
       edit: true
-    }, () => console.log)
+    })
   }
 
 
   render() {
-    // console.log(this.state.song)
+    // console.log(this.props.song.attributes.name)
     return(
       <div>
-        {this.state.edit ? <SongView song={this.state.song} /> : <SongCard handleEditState={this.handleEditState} song={this.props.song}/>}
+        {this.state.edit ?
+          <SongViewEdit
+            handleSongFilter={this.props.handleSongFilter}
+            handleSongChange={this.handleSongChange}
+            song={this.props.song}
+            handleSongEdit={this.props.handleSongEdit}/> :
+          <SongCard
+            handleEditState={this.handleEditState} song={this.props.song}/>}
       </div>
     )
   }
