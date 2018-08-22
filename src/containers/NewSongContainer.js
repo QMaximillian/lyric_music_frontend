@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import SongView from '../components/SongView'
 import ResponsivePiano from '../components/ResponsivePiano'
 import RhymingDict from '../components/RhymingDict'
+import BasicPiano from '../components/BasicPiano'
 import AllSongs from './AllSongs'
+
 
 
 export default class NewSongContainer extends Component {
@@ -12,7 +14,8 @@ export default class NewSongContainer extends Component {
     lyric: "",
     music: "",
     inTextAreas: false,
-    allSongs: false
+    allSongs: false,
+    pianoType: false
   }
 
   // If your in the textarea (SongView)
@@ -80,6 +83,13 @@ export default class NewSongContainer extends Component {
     }), () => console.log(this.state))
   }
 
+  handlePianoType = () => {
+    this.setState(prevState => ({
+      ...prevState,
+      pianoType: !prevState.pianoType
+    }), () => console.log(this.state.pianoType))
+  }
+
 
 
   render(){
@@ -99,9 +109,15 @@ export default class NewSongContainer extends Component {
               handleTextAreaOnFocus={this.handleTextAreaOnFocus}
               handleTextAreaOnBlur={this.handleTextAreaOnBlur}
             />
-            <ResponsivePiano
-              stateOfTextArea={this.state.inTextAreas}
-            />
+            <button onClick={this.handlePianoType}> Change Piano Size </button>
+            {this.state.pianoType ?
+              <ResponsivePiano
+                stateOfTextArea={this.state.inTextAreas}
+              /> :
+              <BasicPiano
+                stateOfTextArea={this.state.inTextAreas}
+              />
+            }
           </div>
       )}
     </div>

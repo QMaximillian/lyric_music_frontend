@@ -22,9 +22,8 @@ export default class SongView extends Component {
 
 
   render() {
-    console.log(this.props)
     return(
-      <React.Fragment>
+      <div textAlign='center'>
       <Form
         onBlur={this.props.handleTextAreaOnBlur}
         onFocus={this.props.handleTextAreaOnFocus}
@@ -35,21 +34,16 @@ export default class SongView extends Component {
           placeholder={"Song Name"}
           // value={this.props.song.attributes.name}
           onChange={(event) => this.props.handleSongChange(event)} />
-        <Input
-          style={{ width:"100px", height:"100px" }}
-          name="userName"
-          placeholder="User Name"
-          // value={this.state.songName}
-          onChange={(event) => this.props.handleSongChange(event)} />
+
         <TextArea
-          style={{ width:"300px", height:"300px" }}
+          style={{ width:"500px", height:"300px" }}
           name="lyric"
           placeholder="Lyrics"
           // value={this.props.song.attributes.lyric}
           onChange={(event) => this.props.handleSongChange(event)}
           />
         <TextArea
-          style={{ width:"300px", height:"300px" }}
+          style={{ width:"500px", height:"300px" }}
           name="music"
           // value={this.state.music}
           placeholder="Music"
@@ -59,7 +53,7 @@ export default class SongView extends Component {
         <Button
           className="massive ui button" type="Submit">Submit</Button>
       </Form>
-    </React.Fragment>
+    </div>
     )
   }
 }

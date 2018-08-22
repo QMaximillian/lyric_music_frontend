@@ -1,14 +1,23 @@
 import React, { Component } from 'react'
-// import { Button, Input, Form, Grid } from 'semantic-ui-react'
-import { Dropdown } from 'antd'
+import { Dropdown, Button, Input, Form } from 'semantic-ui-react'
+// import { Form, Button, Dropdown, Card, Input, Layout } from 'antd'
 
 const options = [
-  {key: 1, text: "ML", value: "ml"},
-  {key: 2, text: "SL", value: "sl"},
-  {key: 3, text: "Rel_Rhy", value: "rel_rhy"},
-  {key: 4, text: "Rel_Trg", value: "rel_trg"},
+  {key: 1, text: "Words Similar", value: "ml"},
+  {key: 2, text: "Sound Like", value: "sl"},
+  {key: 3, text: "Rhymes", value: "rel_rhy"},
+  {key: 4, text: "Associated Words", value: "rel_trg"},
 ]
 
+const scrollBoxStyle = {
+  height: '120px',
+  width:'120px',
+  border:'1px solid #ccc',
+  font:'16px/26px Georgia, Garamond, Serif',
+  overflow: 'auto',
+  'marginLeft': '370px',
+  display: 'inline-block'
+}
 
 
 export default class RhymingDict extends Component {
@@ -44,38 +53,32 @@ export default class RhymingDict extends Component {
 
   render(){
     const { value } = this.state
-    // console.log(this.state.value)
+
     return (
-
-        // {this.fetchRhymingDictionary()}
-        <div>
-
-
-        {/* <Form
+      <span>
+        <Form
           onFocus={this.props.handleTextAreaOnFocus}
           onBlur={this.props.handleTextAreaOnBlur}
-           onSubmit={this.fetchRhymingDictionary}>
-          <Grid columns={2}>
-            <Grid.Column>
+          onSubmit={this.fetchRhymingDictionary}>
+
+          <div style={{display: 'inline-block'}}>
+            <div style={{display: 'inline-block'}}>
               <Dropdown
                 onChange={this.handleChange}
                 options={options}
                 placeholder='Pick a sort option'
                 selection
-                value={value}
-              />
-            </Grid.Column>
-            <Grid.Column>
+                value={value}/>
+            </div>
+            <div style={scrollBoxStyle}>
               {this.displayDictResults()}
-            </Grid.Column>
-          </Grid>
-        <Input value={this.state.queryWord} name="queryWord" onChange={this.handleInputChange}/>
-        <Button>Submit</Button>
-       </Form> */}
-     </div>
+            </div>
+          </div>
 
-
-
+          <Input placeholder="Get Ideas" value={this.state.queryWord} name="queryWord" onChange={this.handleInputChange}/>
+          <Button>Submit</Button>
+         </Form>
+      </span>
     )
   }
 }

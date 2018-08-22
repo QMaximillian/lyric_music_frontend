@@ -43,21 +43,13 @@ export default class SongViewEdit extends Component {
   //   }
   // }
 
-  // let song = {
-  //   type: "songs",
-  //     attributes: {
-  //       name: songName,
-  //       lyric: lyric,
-  //       music: music,
-  //       user_id: null
-  //     }
-  // }
+
 
 
 
 
   render() {
-    console.log(this.props.song.attributes)
+    // console.log(this.props.song.attributes)
     return(
       <React.Fragment>
       <Form
@@ -72,12 +64,7 @@ export default class SongViewEdit extends Component {
           placeholder={"Song Name"}
           value={this.props.song.attributes.name}
           onChange={(event) => this.props.handleSongEdit(event, this.props.song)} />
-        <Input
-          style={{ width:"100px", height:"100px" }}
-          name="userName"
-          placeholder="User Name"
-          // value={this.state.songName}
-          onChange={(event) => this.props.handleSongEdit(event, this.props.song)} />
+        
         <TextArea
           style={{ width:"300px", height:"300px" }}
           name="lyric"

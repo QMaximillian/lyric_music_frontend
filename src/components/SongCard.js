@@ -9,8 +9,8 @@ const gridStyle = {
   border: 'solid',
   borderColor: 'grey',
   width: 200,
-  height: 200
-
+  height: 200,
+  'margin-bottom': '1em'
 }
 
 const buttonStyle = {
@@ -33,13 +33,15 @@ const SongCard = (props) => {
 
   return(
 
-    <Card.Grid style={gridStyle}>{props.song.attributes.name}
-      <div>
-      <Button onClick={(event) => props.handleEditState()} style={buttonStyle}>Edit Me</Button>
-      <Button onClick={(event) => props.handleSongDelete(props.song)} style={buttonStyle}>Delete</Button>
-    </div>
+        <Card>
+        <Card.Grid style={gridStyle}>{props.song.attributes.name}
+          <div>
+            <Button onClick={(event) => props.handleEditState()} style={buttonStyle}>Edit Me</Button>
+            <Button onClick={(event) => props.handleSongDelete(props.song)} style={buttonStyle}>Delete</Button>
+          </div>
+        </Card.Grid>
+      </Card>
 
-    </Card.Grid>
 
   )
 }

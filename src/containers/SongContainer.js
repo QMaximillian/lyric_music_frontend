@@ -36,7 +36,7 @@ export default class SongContainer extends Component {
 
 
   render() {
-    // console.log(this.props.song.attributes.name)
+    console.log(this.props.song.attributes)
     return(
       <div>
         {this.state.edit ?

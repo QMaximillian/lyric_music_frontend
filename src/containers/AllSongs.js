@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import SongCard from '../components/SongCard'
-import { Card } from 'antd'
+// import SongCard from '../components/SongCard'
+import { Col, Row } from 'antd'
 
 import SongContainer from './SongContainer'
 import NewSongContainer from './NewSongContainer'
@@ -40,69 +40,47 @@ export default class AllSongs extends Component {
   //   })
   // }
 
-  handleSongFilter = (event, songToEdit) => {
-
-  }
-
-
   handleSongEdit = (event, songToEdit) => {
 
     const filteredSong = this.state.songs.filter(song => {
-      // console.log(songToEdit.id)
-      // console.log(song.id);
        return song.id === songToEdit.id
     })
 
     const stateCopy = this.state.songs.slice()
-    // console.log(stateCopy)
-    // console.log(filteredSong)
+
+
+
     let thisOne = stateCopy.find(element => {
       return element.attributes === filteredSong[0].attributes
-      // console.log(element.attributes)
-      // console.log(filteredSong[0].attributes);
+      console.log(element.attributes);
     })
-
-    // console.log();
-    console.log(thisOne.attributes[event.target.name]);
-    // console.log(thisOne[event.target.name])
-    // this.setState({
-    //   songs: stateCopy
-    // })
-
-    // stateCopy.find(element => {
-    //   element.attributes === thisOne.attributes[event.target.name]
-    //
-    // })
-
       thisOne.attributes[event.target.name] = event.target.value
 
       this.setState({
         songs: stateCopy
       })
+  }
 
-      console.log(stateCopy)
+  handleSongDelete = (song) => {
+    fetch(`http://localhost:3001/api/v1/songs/${song.id}`, {
+      method: "DELETE",
+      body: JSON.stringify(song),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+
+    let songsCopy = this.state.songs.slice()
+
+    if (songsCopy.indexOf(song) > -1) {
+      songsCopy.splice(songsCopy.indexOf(song), 1)
+      this.setState({songs: songsCopy})
     }
-
-
-
-
-
-
-
-    // const foundSong = stateCopy.find(filteredSong)
-    // console.log(foundSong);
-
-    // const newSongs = this.state.songs.slice()
-    // newSongs
-    //
-    // console.log(event);
-    //
-    // this.setState({
-    //   [event.target.name]: event.target.value
-    // }, () => console.log(this.state))
+  }
 
     handlePatch = (song) => {
-      console.log(song.attributes.lyric)
+      // console.log(song.attributes.lyric)
       // let song = {
       //   type: "songs",
       //     attributes: {
@@ -122,38 +100,28 @@ export default class AllSongs extends Component {
       }).then(console.log)
     }
 
-    handleSongDelete = (song) => {
-      fetch(`http://localhost:3001/api/v1/songs/${song.id}`, {
-        method: "DELETE",
-        body: JSON.stringify(song),
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      }).then(console.log)
 
-      let songsCopy = this.state.songs.slice()
-
-      if (songsCopy.indexOf(song) > -1) {
-        songsCopy.splice(songsCopy.indexOf(song), 1)
-        this.setState({songs: songsCopy})
-      }
-    }
 
 
 
   mappedSongs = () => {
     return this.state.songs.map(song => {
-      return <div style={{padding: '30px' }}>
+      // return <div style={{padding: '30px' }}>
+
+    return <Row xs={2}>
+        <Col xl={10}>
         <SongContainer
           handlePatch={this.handlePatch}
           handleSongFilter={this.handleSongFilter}
           handleSongEdit={this.handleSongEdit}
           handleSongDelete={this.handleSongDelete}
           key={`name-${song.attributes.name}`}
-          song={song}/>
+          song={song}
+        />
+      </Col>
+    </Row>
 
-      </div>
+
     })
   }
 

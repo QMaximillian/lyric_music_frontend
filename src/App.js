@@ -1,12 +1,13 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import AllSongs from './containers/AllSongs'
-import NavBar from './components/NavBar'
+// import { BrowserRouter as Router, Route } from 'react-router-dom';
+// import AllSongs from './containers/AllSongs'
+// import NavBar from './components/NavBar'
 // import Homepage from './components/Homepage'
+// import UserSignIn from './components/UserSignIn'
 
 import NewSongContainer from './containers/NewSongContainer'
-import { Layout } from 'antd'
-const { Header, Footer, Sider, Content } = Layout
+// import { Layout } from 'antd'
+// const { Header, Footer, Sider, Content } = Layout
 
 const App = () => {
     return (
