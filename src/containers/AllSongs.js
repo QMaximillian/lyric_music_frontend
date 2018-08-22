@@ -46,7 +46,7 @@ export default class AllSongs extends Component {
 
 
   handleSongEdit = (event, songToEdit) => {
-    event.persist()
+
     const filteredSong = this.state.songs.filter(song => {
       // console.log(songToEdit.id)
       // console.log(song.id);
@@ -101,14 +101,56 @@ export default class AllSongs extends Component {
     //   [event.target.name]: event.target.value
     // }, () => console.log(this.state))
 
+    handlePatch = (song) => {
+      console.log(song.attributes.lyric)
+      // let song = {
+      //   type: "songs",
+      //     attributes: {
+      //       name: song.attributes.name,
+      //       lyric: lyric,
+      //       music: music,
+      //       user_id: null
+      //     }
+      // }
+      fetch(`http://localhost:3001/api/v1/songs/${song.id}`, {
+        method: "PATCH",
+        body: JSON.stringify(song),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      }).then(console.log)
+    }
+
+    handleSongDelete = (song) => {
+      fetch(`http://localhost:3001/api/v1/songs/${song.id}`, {
+        method: "DELETE",
+        body: JSON.stringify(song),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      }).then(console.log)
+
+      let songsCopy = this.state.songs.slice()
+
+      if (songsCopy.indexOf(song) > -1) {
+        songsCopy.splice(songsCopy.indexOf(song), 1)
+        this.setState({songs: songsCopy})
+      }
+    }
+
 
 
   mappedSongs = () => {
     return this.state.songs.map(song => {
       return <div style={{padding: '30px' }}>
         <SongContainer
+          handlePatch={this.handlePatch}
           handleSongFilter={this.handleSongFilter}
-          handleSongEdit={this.handleSongEdit} key={`name-${song.attributes.name}`}
+          handleSongEdit={this.handleSongEdit}
+          handleSongDelete={this.handleSongDelete}
+          key={`name-${song.attributes.name}`}
           song={song}/>
 
       </div>

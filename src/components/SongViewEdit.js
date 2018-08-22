@@ -19,15 +19,7 @@ export default class SongViewEdit extends Component {
 
 
 
-    // let songBody = {
-    //   type: "songs",
-    //   attributes: {
-    //     name: songName,
-    //     lyric: this.state.lyric,
-    //     music: this.state.music,
-    //     user_id: null
-    //   }
-    // }
+
 
   //   event.preventDefault()
   //   fetch('http://localhost:3001/api/v1/songs', {
@@ -41,6 +33,27 @@ export default class SongViewEdit extends Component {
   //     .then(console.log)
   // }
 
+  // let songBody = {
+  //   type: "songs",
+  //   attributes: {
+  //     name: songName,
+  //     lyric: lyric,
+  //     music: music,
+  //     user_id: null
+  //   }
+  // }
+
+  // let song = {
+  //   type: "songs",
+  //     attributes: {
+  //       name: songName,
+  //       lyric: lyric,
+  //       music: music,
+  //       user_id: null
+  //     }
+  // }
+
+
 
 
   render() {
@@ -51,7 +64,8 @@ export default class SongViewEdit extends Component {
         onBlur={this.props.handleTextAreaOnBlur}
         onFocus={this.props.handleTextAreaOnFocus}
         className="ui grid container"
-        onSubmit={this.props.handleSongEdit}>
+        onSubmit={this.props.handlePatch(this.props.song)}>
+
         <Input
           style={{ width:"100px", height:"100px" }}
           name="songName"

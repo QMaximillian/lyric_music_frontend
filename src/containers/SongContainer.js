@@ -7,6 +7,7 @@ import SongViewEdit from '../components/SongViewEdit'
 export default class SongContainer extends Component {
 
   state = {
+    delete: false,
     edit: false,
     songName: this.props.song.attributes.name,
     lyric: this.props.song.attributes.lyric,
@@ -25,11 +26,13 @@ export default class SongContainer extends Component {
 
 
   handleEditState = () => {
-    console.log("Running")
+    // console.log("Running")
     this.setState({
       edit: true
     })
   }
+
+
 
 
   render() {
@@ -38,11 +41,14 @@ export default class SongContainer extends Component {
       <div>
         {this.state.edit ?
           <SongViewEdit
+            handlePatch={this.props.handlePatch}
             handleSongFilter={this.props.handleSongFilter}
             handleSongChange={this.handleSongChange}
             song={this.props.song}
-            handleSongEdit={this.props.handleSongEdit}/> :
+            handleSongEdit={this.props.handleSongEdit}
+            /> :
           <SongCard
+            handleSongDelete={this.props.handleSongDelete}
             handleEditState={this.handleEditState} song={this.props.song}/>}
       </div>
     )

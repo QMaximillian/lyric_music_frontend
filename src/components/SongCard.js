@@ -36,6 +36,7 @@ const SongCard = (props) => {
     <Card.Grid style={gridStyle}>{props.song.attributes.name}
       <div>
       <Button onClick={(event) => props.handleEditState()} style={buttonStyle}>Edit Me</Button>
+      <Button onClick={(event) => props.handleSongDelete(props.song)} style={buttonStyle}>Delete</Button>
     </div>
 
     </Card.Grid>
