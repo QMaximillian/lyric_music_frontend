@@ -41,9 +41,11 @@ export default class RhymingDict extends Component {
         return <p>{result.word}</p>
   })}
 
-  handleChange = (e, { value }) => this.setState(
-      { value }
-  )
+  handleChange = (e) => {
+    this.setState({
+      value: e.target.value
+    })
+  }
 
   handleInputChange = (event) => {
     this.setState({
@@ -63,12 +65,16 @@ export default class RhymingDict extends Component {
 
           <div style={{display: 'inline-block'}}>
             <div style={{display: 'inline-block'}}>
-              <Dropdown
-                onChange={this.handleChange}
-                options={options}
+              <select onChange={this.handleChange}
+                // options={options}
                 placeholder='Pick a sort option'
                 selection
-                value={value}/>
+                value={value}>
+                <option value="ml">Words Similar</option>
+                <option value="sl">Sound Like</option>
+                <option value="rel_rhy">Rhymes With</option>
+                <option value="rel_trg">Associated Words</option>
+              </select>
             </div>
             <div style={scrollBoxStyle}>
               {this.displayDictResults()}
